@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InterviewProblem.View"
+        xmlns:v="clr-namespace:InterviewProblem.View"           
+        xmlns:vm="clr-namespace:InterviewProblem.ViewModel"
         mc:Ignorable="d"
-        Title="Temperature Testing" Height="320" Width="442">
+        Title="Temperature Testing" Height="320" Width="442" ResizeMode="NoResize">    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -26,9 +27,15 @@
         <TextBlock Margin="5,2,2,2" Grid.Row="1">Name:</TextBlock>
         <ComboBox Margin="2" Grid.Row="1" Grid.Column="1"></ComboBox>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2">Capture</Button>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2" HorizontalAlignment="Right">Capture</Button>
 
-        <ListBox Margin="2" Grid.Row="2" Grid.ColumnSpan="2" Name="Records" Background="Transparent" ></ListBox>
+        <ListBox Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Temperatures}" Name="Records" Background="#77FFFFFF" >
+            <ListBox.Resources>
+                <DataTemplate DataType="{x:Type vm:TemperatureViewModel}">
+                    <v:TemperatureView />
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
 
 
     </Grid>

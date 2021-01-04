@@ -1,4 +1,5 @@
 ﻿using InterviewProblem.View;
+using InterviewProblem.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,7 +17,8 @@ namespace InterviewProblem
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainView view = new MainView();
+            MainViewModel vm = new MainViewModel();
+            MainView view = new MainView() { DataContext = vm };
             view.Show();
         }
     }
