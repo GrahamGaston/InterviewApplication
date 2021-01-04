@@ -14,16 +14,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32"></RowDefinition>
             <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="2" Grid.RowSpan="3"></Image>
+        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
         
         <TextBlock Margin="5,2,2,2">Temperature:</TextBlock>
         <TextBlock Margin="2" Grid.Column="1" Text="{Binding databaseRecord.Temperature}"></TextBlock>
 
         <TextBlock Margin="5,2,2,2" Grid.Row="1">Name:</TextBlock>
-        <TextBox Margin="2" Grid.Row="1" Grid.Column="1"></TextBox>
+        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1"></ComboBox>
+
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2">Capture</Button>
 
         <ListBox Margin="2" Grid.Row="2" Grid.ColumnSpan="2" Name="Records" Background="Transparent" ></ListBox>
 

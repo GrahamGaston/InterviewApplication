@@ -35,5 +35,7 @@ namespace InterviewProblem.Model
                 return false;
             }
         }
+
+        public DateTime TimeStamp { get; set; }
     }
 }

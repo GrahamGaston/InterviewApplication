@@ -106,5 +106,8 @@
   <ItemGroup>
     <Resource Include="Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DatabaseLayer\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
