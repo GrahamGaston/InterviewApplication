@@ -6,31 +6,54 @@
         xmlns:v="clr-namespace:InterviewProblem.View"           
         xmlns:vm="clr-namespace:InterviewProblem.ViewModel"
         mc:Ignorable="d"
-        Title="Temperature Testing" Height="320" Width="442" ResizeMode="NoResize">    
+        Title="Temperature Testing" Height="296" Width="405" ResizeMode="NoResize" Icon="../Resources/baseline_whatshot_black_18dp.png">    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="85"></ColumnDefinition>
+            <ColumnDefinition Width="125"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
-        
-        <TextBlock Margin="5,2,2,2">Temperature:</TextBlock>
-        <TextBlock Margin="2" Grid.Column="1" Text="{Binding CurrentTemperature.TempF}"/>
-
-        <TextBlock Margin="5,2,2,2" Grid.Row="1">Name:</TextBlock>
-        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Users}" DisplayMemberPath="UserName" SelectedItem="{Binding SelectedUser}"
+        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="4" Grid.RowSpan="3" >
+            <Image.Effect>
+                <BlurEffect Radius="6"/>
+            </Image.Effect>
+        </Image>
+       
+        <TextBlock Margin="5,2,2,2" Grid.Row="0">Name:</TextBlock>
+        <ComboBox Margin="2" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Users}" DisplayMemberPath="UserName" SelectedItem="{Binding SelectedUser}"
                   Text="{Binding SelectedUserName}" IsEditable="True"/>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2" HorizontalAlignment="Right" Command="{Binding CaptureTemperature}">Capture</Button>
+        <TextBlock Grid.Row="1" Margin="5,2,2,2">Temperature:</TextBlock>
+        <TextBlock Margin="2" Grid.Row="1" Grid.Column="1" Text="{Binding CurrentTemperature.TempF, StringFormat={}{0:F1}°F}"/>
+        <Image Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Right" Width="20" VerticalAlignment="Top">
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CurrentTemperature.WithinLimits}" Value="True">
+                            <Setter Property="Source" Value="../Resources/baseline_check_circle_outline_black_18dp.png"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding CurrentTemperature.WithinLimits}" Value="False">
+                            <Setter Property="Source" Value="../Resources/baseline_highlight_off_black_18dp.png"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
 
-        <ListBox Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Temperatures}" Name="Records" Background="#77FFFFFF" >
+
+        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="26" Margin="4" HorizontalAlignment="Right" Command="{Binding CaptureTemperature}">
+            <Button.Content>
+                <Image Source="../Resources/baseline_playlist_add_black_18dp.png"></Image>
+            </Button.Content>
+        </Button>
+
+        <ListBox Grid.Row="2" Grid.ColumnSpan="4" ItemsSource="{Binding Temperatures}" Name="Records" Background="#77FFFFFF" >
             <ListBox.Resources>
                 <DataTemplate DataType="{x:Type vm:TemperatureViewModel}">
                     <v:TemperatureView />

@@ -5,21 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InterviewProblem.View"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="400">
+             Height="24" Width="355" BorderBrush="CadetBlue" BorderThickness="1" Background="#99AADDFF">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="76"></ColumnDefinition>
+            <ColumnDefinition Width="124"></ColumnDefinition>
+            <ColumnDefinition Width="1"></ColumnDefinition>
+            <ColumnDefinition Width="82"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Border BorderThickness="1" Grid.ColumnSpan="2" Grid.RowSpan="2"></Border>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="2">Time Stamp:</TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="1" Margin="2" Text="{Binding Temperature.TimeStamp}"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="2">Temperature:</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Temperature.TempF}"></TextBlock>
+        <TextBlock Grid.Column="0" Margin="2" FontSize="12" FontWeight="Bold">Time Stamp:</TextBlock>
+        <TextBlock Grid.Column="1" Margin="2" FontSize="12" Text="{Binding Temperature.TimeStamp}" HorizontalAlignment="Left"></TextBlock>
+        <Border Grid.Column="2" Grid.RowSpan="2" BorderBrush="CadetBlue" BorderThickness="1"></Border>
+        <TextBlock Grid.Column="3" Margin="4,2,2,2" FontSize="12" FontWeight="Bold">Temperature:</TextBlock>
+        <TextBlock Grid.Column="4" Margin="2" FontSize="12" Text="{Binding Temperature.TempF, StringFormat={}{0:F1}°F}" HorizontalAlignment="Left"></TextBlock>
+        <Image Grid.Column="4" Margin="2" HorizontalAlignment="Right">
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Temperature.WithinLimits}" Value="True">
+                            <Setter Property="Source" Value="../Resources/baseline_check_circle_outline_black_18dp.png"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Temperature.WithinLimits}" Value="False">
+                            <Setter Property="Source" Value="../Resources/baseline_highlight_off_black_18dp.png"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+
     </Grid>
 </UserControl>
