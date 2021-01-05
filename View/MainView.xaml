@@ -25,7 +25,7 @@
         <TextBlock Margin="2" Grid.Column="1" Text="{Binding databaseRecord.Temperature}"></TextBlock>
 
         <TextBlock Margin="5,2,2,2" Grid.Row="1">Name:</TextBlock>
-        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1"></ComboBox>
+        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Users}" DisplayMemberPath="UserName" IsEditable="True"></ComboBox>
 
         <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2" HorizontalAlignment="Right">Capture</Button>
 

@@ -1,4 +1,5 @@
-﻿using InterviewProblem.Model;
+﻿using InterviewProblem.DatabaseLayer;
+using InterviewProblem.Model;
 using Mvvm;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,13 @@ namespace InterviewProblem.ViewModel
             Temperatures = new ObservableCollection<TemperatureViewModel>();
             Temperatures.Add(new TemperatureViewModel(new Temperature() { TimeStamp = DateTime.Now }));
             OnPropertyChanged("Temperatures");
+            _dl = new TempLoggerDal(DatabasePath);
+            Users = _dl.GetAllUsers().ToList() ;
+            
         }
+
+        private const string DatabasePath = @"TempLogger.db";
+        private TempLoggerDal _dl;
 
         public List<User> Users { get; set; }
 
