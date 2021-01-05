@@ -44,10 +44,12 @@ namespace InterviewProblem.DatabaseLayer
             using (var cmd = new SqliteCommand(query, con))
             {
                 con.Open();
-                var reader = cmd.ExecuteReader();
-                if (!reader.HasRows) yield break;
-                while (reader.Read())
-                    yield return new User(reader.GetFieldValue<string>(1), reader.GetFieldValue<int>(0));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.HasRows) yield break;
+                    while (reader.Read())
+                        yield return new User(reader.GetFieldValue<string>(1), reader.GetFieldValue<int>(0));
+                }
             }
             yield break;
         }
@@ -80,10 +82,13 @@ namespace InterviewProblem.DatabaseLayer
             {
                 cmd.Parameters.AddWithValue("@userId", user.UserId);
                 con.Open();
-                var reader = cmd.ExecuteReader();
-                if (!reader.HasRows) yield break;
-                while (reader.Read())
-                    yield return new Temperature(reader.GetFieldValue<double>(0), reader.GetFieldValue<DateTime>(1));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.HasRows) yield break;
+                    while (reader.Read())
+                        yield return new Temperature(reader.GetFieldValue<double>(0), reader.GetFieldValue<DateTime>(1));
+
+                }
             }
             yield break;
         }
