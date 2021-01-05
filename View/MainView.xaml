@@ -22,12 +22,13 @@
         <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
         
         <TextBlock Margin="5,2,2,2">Temperature:</TextBlock>
-        <TextBlock Margin="2" Grid.Column="1" Text="{Binding databaseRecord.Temperature}"></TextBlock>
+        <TextBlock Margin="2" Grid.Column="1" Text="{Binding CurrentTemperature.TempF}"/>
 
         <TextBlock Margin="5,2,2,2" Grid.Row="1">Name:</TextBlock>
-        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Users}" DisplayMemberPath="UserName" IsEditable="True"></ComboBox>
+        <ComboBox Margin="2" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Users}" DisplayMemberPath="UserName" SelectedItem="{Binding SelectedUser}"
+                  Text="{Binding SelectedUserName}" IsEditable="True"/>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2" HorizontalAlignment="Right">Capture</Button>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="2" HorizontalAlignment="Right" Command="{Binding CaptureTemperature}">Capture</Button>
 
         <ListBox Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Temperatures}" Name="Records" Background="#77FFFFFF" >
             <ListBox.Resources>

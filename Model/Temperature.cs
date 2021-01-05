@@ -1,41 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InterviewProblem.Model
 {
     public class Temperature
     {
-        private static double uVperC = 41;
 
-        private double TCVolts 
-        { 
-            get
-            {
-                Random rand = new Random();
-                double temp = rand.Next(900, 1060) / 10;
-                return (rand.NextDouble() * 820) + 3526;
-            }
-        
+        public Temperature()
+        {
+            TcVolts = GenerateTCVolts();
+            TimeStamp = DateTime.Now;
         }
-        public double Temp 
-        { 
-            get
-            {
-                // TODO: Convert to Farenheit
-                return TCVolts / uVperC;
-            }                
+
+        public Temperature(double voltage, DateTime timestamp)
+        {
+            TcVolts = voltage;
+            TimeStamp = timestamp;
         }
-        public bool BelowLimit { 
+
+        public double TcVolts { get; private set; }
+
+        public double TempC => TcVolts * 10;
+
+        public double TempF => TempC * 1.8 + 32;
+
+        public bool BelowLimit
+        {
             get
             {
                 // TODO: Verify Temperature between 90 and 99 degress F.
-                return false;
+                return TempF < 90;
             }
         }
 
         public DateTime TimeStamp { get; set; }
+
+        //private const double UpperC = 41;
+
+        // 0-10VDC signal
+        private double GenerateTCVolts() => new Random().NextDouble() * 10;
     }
 }

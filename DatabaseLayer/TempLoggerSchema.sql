@@ -5,9 +5,9 @@
 );
 
 CREATE TABLE IF NOT EXISTS Temperatures (
-    TemperatureId INTEGER PRIMARY KEY NOT NULL,
+    MeasurementId INTEGER PRIMARY KEY NOT NULL,
     UserId INTEGER NOT NULL,
-    TemperatureTimestamp DATETIME NOT NULL,
-    Temperature REAL NOT NULL,
+    Timestamp DATETIME NOT NULL,
+    Voltage REAL NOT NULL,
     FOREIGN KEY(UserId) REFERENCES Users(UserId)
 );

@@ -20,6 +20,6 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Margin="2">Time Stamp:</TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="1" Margin="2" Text="{Binding Temperature.TimeStamp}"></TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" Margin="2">Temperature:</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Temperature.Temperature}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Temperature.TempF}"></TextBlock>
     </Grid>
 </UserControl>
