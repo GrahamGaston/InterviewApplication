@@ -59,6 +59,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatabaseLayer\TempLoggerDal.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\TemperatureViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">
@@ -114,8 +115,16 @@
   <ItemGroup>
     <Resource Include="Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DatabaseLayer\" />
+    <PackageReference Include="Microsoft.Data.Sqlite">
+      <Version>5.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseLayer\TempLoggerSchema.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
