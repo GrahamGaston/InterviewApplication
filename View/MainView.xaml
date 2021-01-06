@@ -6,7 +6,7 @@
         xmlns:v="clr-namespace:InterviewProblem.View"           
         xmlns:vm="clr-namespace:InterviewProblem.ViewModel"
         mc:Ignorable="d"
-        Title="Temperature Testing" Height="296" Width="405" ResizeMode="NoResize" Icon="../Resources/baseline_whatshot_black_18dp.png">    
+        Title="Temperature Testing" Height="296" Width="405" Icon="../Resources/baseline_whatshot_black_18dp.png">    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85"></ColumnDefinition>
@@ -19,7 +19,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Grid.ColumnSpan="4" Grid.RowSpan="3" >
+        <Image Source="..\Resources\christine-sandu-4l63PeiANu4-unsplash.jpg" Stretch="UniformToFill" Grid.ColumnSpan="4" Grid.RowSpan="3" >
             <Image.Effect>
                 <BlurEffect Radius="6"/>
             </Image.Effect>

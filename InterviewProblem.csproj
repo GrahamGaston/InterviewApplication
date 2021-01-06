@@ -125,6 +125,7 @@
     <Content Include="DatabaseLayer\TempLoggerSchema.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="IntervewProblem.txt" />
     <Resource Include="Resources\baseline_check_circle_outline_black_18dp.png" />
     <Resource Include="Resources\baseline_highlight_off_black_18dp.png" />
     <Resource Include="Resources\baseline_playlist_add_black_18dp.png" />

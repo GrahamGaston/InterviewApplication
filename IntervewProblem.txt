@@ -1,0 +1,10 @@
+Temperature not showing up in ListBox
+Fix Farenheit conversion currently just showing Celcius
+
+New Feature - Add another window view/viewmodel showing User Totals for all users in the database (Number Passed/Number Failed)
+Add button to open window from MainView
+
+Test:
+Add 3 users with temperatures added to database
+Verify Temp is displayed in °F and Timestamp is correct
+Verify New Feature showing totals opens and displays the proper counts

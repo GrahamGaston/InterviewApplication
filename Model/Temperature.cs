@@ -21,7 +21,7 @@ namespace InterviewProblem.Model
 
         public double TempC => 5 / TcVolts + 35;
 
-        public double TempF => TempC * 1.8 + 32;
+        public double TempF => TempC;  // Fix conversion
 
         public bool WithinLimits
         {
