@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InterviewProblem.DatabaseLayer;
 using InterviewProblem.Model;
+using InterviewProblem.View;
 using Mvvm;
 using Mvvm.Commands;
 
@@ -95,6 +96,16 @@ namespace InterviewProblem.ViewModel
             {
                 Temperatures.Add(new TemperatureViewModel(temp));
             }
+        }
+
+        private RelayCommand _openUserTotalsCommand;
+        public RelayCommand OpenUserTotalsCommand
+            => _openUserTotalsCommand ?? (_openUserTotalsCommand = new RelayCommand(param => OpenUserTotals()));
+
+        private void OpenUserTotals()
+        {
+            var userTotalsView = new UserTotalsView();
+            userTotalsView.Show();
         }
     }
 }

@@ -93,6 +93,27 @@ namespace InterviewProblem.DatabaseLayer
             yield break;
         }
 
+        public (int NumberPassed, int NumberFailed) GetUserTotals()
+        {
+            var query = "SELECT " +
+                        "(SELECT COUNT(*) FROM Temperatures WHERE Voltage > 95 AND Voltage < 100.3) AS NumberPassed, " +
+                        "(SELECT COUNT(*) FROM Temperatures WHERE Voltage <= 95 OR Voltage >= 100.3) AS NumberFailed";
+
+            using (var con = new SqliteConnection(_connectionString))
+            using (var cmd = new SqliteCommand(query, con))
+            {
+                con.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return (reader.GetInt32(0), reader.GetInt32(1));
+                    }
+                }
+            }
+            return (0, 0);
+        }
+
         private bool InitializeDatabase()
         {
             var query = File.ReadAllText(@"DatabaseLayer\TempLoggerSchema.sql");
