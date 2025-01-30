@@ -1,8 +1,8 @@
-﻿<Window x:Class="InterviewProblem.View.MainView"
+<Window x:Class="InterviewProblem.View.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.microsoft.com/markup-compatibility/2006"
         xmlns:v="clr-namespace:InterviewProblem.View"           
         xmlns:vm="clr-namespace:InterviewProblem.ViewModel"
         mc:Ignorable="d"
@@ -50,6 +50,12 @@
         <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="26" Margin="4" HorizontalAlignment="Right" Command="{Binding CaptureTemperature}">
             <Button.Content>
                 <Image Source="../Resources/baseline_playlist_add_black_18dp.png"></Image>
+            </Button.Content>
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="2" Width="100" Margin="4" HorizontalAlignment="Right" Command="{Binding OpenUserTotalsCommand}">
+            <Button.Content>
+                <TextBlock>Show User Totals</TextBlock>
             </Button.Content>
         </Button>
 
